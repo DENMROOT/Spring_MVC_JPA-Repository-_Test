@@ -5,23 +5,25 @@ package spring.mvc.service.Impl;
  */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import spring.mvc.entity.Worker;
+import org.springframework.transaction.annotation.Transactional;
+import spring.mvc.entity.WorkerEntity;
 import spring.mvc.repository.WorkerRepository;
 import spring.mvc.service.WorkerService;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class WorkerServiceImpl implements WorkerService {
 
     @Autowired
     private WorkerRepository WorkerRepository;
 
     @Override
-    public Worker addWorker(Worker Worker) {
-        Worker savedWorker = WorkerRepository.saveAndFlush(Worker);
+    public WorkerEntity addWorker(WorkerEntity WorkerEntity) {
+        WorkerEntity savedWorkerEntity = WorkerRepository.save(WorkerEntity);
 
-        return savedWorker;
+        return savedWorkerEntity;
     }
 
     @Override
@@ -30,17 +32,17 @@ public class WorkerServiceImpl implements WorkerService {
     }
 
     @Override
-    public Worker getByName(String lastname) {
+    public WorkerEntity getByName(String lastname) {
         return WorkerRepository.findByName(lastname);
     }
 
     @Override
-    public Worker editWorker(Worker Worker) {
-        return WorkerRepository.saveAndFlush(Worker);
+    public WorkerEntity editWorker(WorkerEntity WorkerEntity) {
+        return WorkerRepository.saveAndFlush(WorkerEntity);
     }
 
     @Override
-    public List<Worker> getAll() {
+    public List<WorkerEntity> getAll() {
         return WorkerRepository.findAll();
     }
 }

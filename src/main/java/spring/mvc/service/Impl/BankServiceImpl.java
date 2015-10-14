@@ -5,23 +5,25 @@ package spring.mvc.service.Impl;
  */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import spring.mvc.entity.Bank;
+import org.springframework.transaction.annotation.Transactional;
+import spring.mvc.entity.BankEntity;
 import spring.mvc.repository.BankRepository;
 import spring.mvc.service.BankService;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class BankServiceImpl implements BankService {
 
     @Autowired
     private BankRepository bankRepository;
 
     @Override
-    public Bank addBank(Bank bank) {
-        Bank savedBank = bankRepository.saveAndFlush(bank);
+    public BankEntity addBank(BankEntity bankEntity) {
+        BankEntity savedBankEntity = bankRepository.save(bankEntity);
 
-        return savedBank;
+        return savedBankEntity;
     }
 
     @Override
@@ -30,17 +32,17 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public Bank getByName(String name) {
+    public BankEntity getByName(String name) {
         return bankRepository.findByName(name);
     }
 
     @Override
-    public Bank editBank(Bank bank) {
-        return bankRepository.saveAndFlush(bank);
+    public BankEntity editBank(BankEntity bankEntity) {
+        return bankRepository.saveAndFlush(bankEntity);
     }
 
     @Override
-    public List<Bank> getAll() {
+    public List<BankEntity> getAll() {
         return bankRepository.findAll();
     }
 }

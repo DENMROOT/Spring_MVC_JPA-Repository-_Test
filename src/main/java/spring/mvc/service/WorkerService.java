@@ -1,6 +1,6 @@
 package spring.mvc.service;
 
-import spring.mvc.entity.Worker;
+import spring.mvc.entity.WorkerEntity;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import java.util.List;
  * Created by Денис on 28.02.2015.
  */
 public interface WorkerService {
-    Worker addWorker(Worker worker);
+    WorkerEntity addWorker(WorkerEntity workerEntity);
     void delete(long id);
-    Worker getByName(String lastname);
-    Worker editWorker(Worker worker);
-    List<Worker> getAll();
+    WorkerEntity getByName(String lastname);
+    WorkerEntity editWorker(WorkerEntity workerEntity);
+    List<WorkerEntity> getAll();
 }

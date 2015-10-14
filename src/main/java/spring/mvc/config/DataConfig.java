@@ -12,6 +12,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -41,14 +44,22 @@ public class DataConfig {
 
     @Bean
     public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        // no need shutdown, EmbeddedDatabaseFactoryBean will take care of this
+        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+        EmbeddedDatabase db = builder
+                .setType(EmbeddedDatabaseType.H2)
+                .addScript("db/create-db.sql")
+                .addScript("db/insert-data.sql")
+                .build();
+        return db;
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//
+//        dataSource.setDriverClassName(env.getRequiredProperty(PROP_DATABASE_DRIVER));
+//        dataSource.setUrl(env.getRequiredProperty(PROP_DATABASE_URL));
+//        dataSource.setUsername(env.getRequiredProperty(PROP_DATABASE_USERNAME));
+//        dataSource.setPassword(env.getRequiredProperty(PROP_DATABASE_PASSWORD));
 
-        dataSource.setDriverClassName(env.getRequiredProperty(PROP_DATABASE_DRIVER));
-        dataSource.setUrl(env.getRequiredProperty(PROP_DATABASE_URL));
-        dataSource.setUsername(env.getRequiredProperty(PROP_DATABASE_USERNAME));
-        dataSource.setPassword(env.getRequiredProperty(PROP_DATABASE_PASSWORD));
-
-        return dataSource;
+//        return dataSource;
     }
 
     @Bean

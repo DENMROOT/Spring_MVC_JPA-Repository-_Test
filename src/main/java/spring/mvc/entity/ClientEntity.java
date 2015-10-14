@@ -4,16 +4,14 @@ package spring.mvc.entity;
  * Created by Денис on 28.02.2015.
  */
 
-import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "client")
-public class Client {
+@Table(name = "CLIENT_TABLE")
+public class ClientEntity {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name= "increment", strategy= "increment")
+    @GeneratedValue
     @Column(name = "id", length = 6, nullable = false)
     private long id;
 
@@ -32,22 +30,22 @@ public class Client {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "bank_id", nullable = false)
-    private Bank bank;
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+//    @JoinColumn(name = "bank_id", nullable = false)
+//    private Bank bank;
 
-    public Client (){
+    public ClientEntity(){
 
     }
 
-    public Client(String firstName, String lastName, String phoneNumber,
-                  String address, String email, Bank bank) {
+    public ClientEntity(String firstName, String lastName, String phoneNumber,
+                        String address, String email, BankEntity bankEntity) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.email = email;
-        this.bank = bank;
+//        this.bank = bank;
     }
 
     public long getId() {
@@ -97,12 +95,12 @@ public class Client {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
+//
+//    public Bank getBank() {
+//        return bank;
+//    }
+//
+//    public void setBank(Bank bank) {
+//        this.bank = bank;
+//    }
 }

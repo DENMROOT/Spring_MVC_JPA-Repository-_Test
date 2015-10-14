@@ -1,6 +1,6 @@
 package spring.mvc.service;
 
-import spring.mvc.entity.Client;
+import spring.mvc.entity.ClientEntity;
 
 import java.util.List;
 
@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface ClientService {
 
-    Client addClient(Client client);
+    ClientEntity addClient(ClientEntity clientEntity);
     void delete(long id);
-    Client getByName(String lastname);
-    Client editClient(Client client);
-    List<Client> getAll();
+    ClientEntity getByName(String lastname);
+    ClientEntity editClient(ClientEntity clientEntity);
+    List<ClientEntity> getAll();
 }

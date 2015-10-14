@@ -1,8 +1,7 @@
 package spring.mvc.util;
 
-import spring.mvc.entity.Bank;
-import spring.mvc.entity.Client;
-import spring.mvc.entity.Worker;
+import spring.mvc.entity.BankEntity;
+import spring.mvc.entity.WorkerEntity;
 import spring.mvc.entity.enums.WorkerStatus;
 
 /**
@@ -10,15 +9,15 @@ import spring.mvc.entity.enums.WorkerStatus;
  */
 public class WorkerUtil {
 
-    public static Worker createWorker(String firstName, String lastName, WorkerStatus status, String phoneNumber, Bank bank) {
-        Worker worker = new Worker();
-        worker.setFirstName(firstName);
-        worker.setLastName(lastName);
-        worker.setStatus(status);
-        worker.setPhoneNumber(phoneNumber);
-        worker.setBank(bank);
+    public static WorkerEntity createWorker(String firstName, String lastName, WorkerStatus status, String phoneNumber, BankEntity bankEntity) {
+        WorkerEntity workerEntity = new WorkerEntity();
+        workerEntity.setFirstName(firstName);
+        workerEntity.setLastName(lastName);
+        workerEntity.setStatus(status);
+        workerEntity.setPhoneNumber(phoneNumber);
+//        worker.setBank(bank);
 
-        return worker;
+        return workerEntity;
     }
 
 }

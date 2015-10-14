@@ -5,23 +5,25 @@ package spring.mvc.service.Impl;
  */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import spring.mvc.entity.Client;
+import org.springframework.transaction.annotation.Transactional;
+import spring.mvc.entity.ClientEntity;
 import spring.mvc.repository.ClientRepository;
 import spring.mvc.service.ClientService;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class ClientServiceImpl implements ClientService {
 
     @Autowired
     private ClientRepository ClientRepository;
 
     @Override
-    public Client addClient(Client Client) {
-        Client savedClient = ClientRepository.saveAndFlush(Client);
+    public ClientEntity addClient(ClientEntity ClientEntity) {
+        ClientEntity savedClientEntity = ClientRepository.save(ClientEntity);
 
-        return savedClient;
+        return savedClientEntity;
     }
 
     @Override
@@ -30,17 +32,17 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client getByName(String lastname) {
-        return ClientRepository.findByName(lastname);
+    public ClientEntity getByName(String lastname) {
+        return ClientRepository.findBylastName(lastname);
     }
 
     @Override
-    public Client editClient(Client Client) {
-        return ClientRepository.saveAndFlush(Client);
+    public ClientEntity editClient(ClientEntity ClientEntity) {
+        return ClientRepository.saveAndFlush(ClientEntity);
     }
 
     @Override
-    public List<Client> getAll() {
+    public List<ClientEntity> getAll() {
         return ClientRepository.findAll();
     }
 }

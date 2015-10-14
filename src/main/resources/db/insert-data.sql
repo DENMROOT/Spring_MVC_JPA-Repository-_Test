@@ -1,0 +1,3 @@
+insert into CLIENT_TABLE (id, address, email, first_name, last_name, phone_number) values (1, 'Lenina 86', 'denm2000@ukr.net', 'Denys', 'Makarov', '380676138426');
+insert into CLIENT_TABLE (id, address, email, first_name, last_name, phone_number) values (2, 'Ulica 22', 'denm2002@gmail.com', 'Igor', 'Sidorov', '380676138426');
+insert into CLIENT_TABLE (id, address, email, first_name, last_name, phone_number) values (3, 'Leppika 23', 'denm2000@mail.ru', 'Petya', 'Pupkin', '380676138426');

@@ -6,10 +6,9 @@ package spring.mvc.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import spring.mvc.entity.Client;
-import spring.mvc.entity.Worker;
+import spring.mvc.entity.WorkerEntity;
 
-public interface WorkerRepository extends JpaRepository<Worker, Long> {
-    @Query("select w from Worker w where w.lastName = :lastname")
-    Worker findByName(@Param("lastname") String lastname);
+public interface WorkerRepository extends JpaRepository<WorkerEntity, Long> {
+    @Query("select w from WorkerEntity w where w.lastName = :lastname")
+    WorkerEntity findByName(@Param("lastname") String lastname);
 }

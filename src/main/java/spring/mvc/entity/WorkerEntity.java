@@ -4,18 +4,16 @@ package spring.mvc.entity;
  * Created by Денис on 28.02.2015.
  */
 
-import org.hibernate.annotations.GenericGenerator;
 import spring.mvc.entity.enums.WorkerStatus;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "worker")
-public class Worker {
+@Table(name = "WORKER_TABLE")
+public class WorkerEntity {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name= "increment", strategy= "increment")
+    @GeneratedValue
     @Column(name = "id", length = 6, nullable = false)
     private long id;
 
@@ -31,19 +29,19 @@ public class Worker {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "bank_id", nullable = false)
-    private Bank bank;
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+//    @JoinColumn(name = "bank_id", nullable = false)
+//    private Bank bank;
 
-    public Worker() {
+    public WorkerEntity() {
     }
 
-    public Worker(String firstName, String lastName, WorkerStatus status, String phoneNumber, Bank bank) {
+    public WorkerEntity(String firstName, String lastName, WorkerStatus status, String phoneNumber, BankEntity bankEntity) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.status = status;
         this.phoneNumber = phoneNumber;
-        this.bank = bank;
+//        this.bank = bank;
     }
 
     public long getId() {
@@ -86,12 +84,12 @@ public class Worker {
         this.phoneNumber = phoneNumber;
     }
 
-    public Bank getBank() {
-        return bank;
-    }
-
-    public void setBank(Bank bank) {
-        this.bank = bank;
-    }
+//    public Bank getBank() {
+//        return bank;
+//    }
+//
+//    public void setBank(Bank bank) {
+//        this.bank = bank;
+//    }
 
 }

@@ -7,22 +7,20 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "bank")
-public class Bank {
-
+@Table(name = "BANK_TABLE")
+public class BankEntity {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name= "increment", strategy= "increment")
+    @GeneratedValue
     @Column(name = "id", length = 6, nullable = false)
     private long id;
 
     @Column(name = "name")
     private String name;
 
-    public Bank() {
+    public BankEntity() {
     }
 
-    public Bank(String name) {
+    public BankEntity(String name) {
         this.name = name;
     }
 
