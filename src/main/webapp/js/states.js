@@ -13,7 +13,7 @@ angular.module('BankApp').config(function($stateProvider) {
         controller: 'ClientCreateController'
     }).state('editClient', { //state for updating a client
         url: '/rest/clients/:id',
-        templateUrl: '/pages/clientViews/client-edit1.html',
+        templateUrl: '/pages/clientViews/client-edit.html',
         controller: 'ClientEditController'
     });
 }).run(function($state) {
