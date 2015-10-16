@@ -4,6 +4,8 @@ package spring.mvc.entity;
  * Created by Денис on 28.02.2015.
  */
 
+import com.google.common.base.Objects;
+
 import javax.persistence.*;
 
 @Entity
@@ -103,4 +105,35 @@ public class ClientEntity {
 //    public void setBank(Bank bank) {
 //        this.bank = bank;
 //    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClientEntity that = (ClientEntity) o;
+        return com.google.common.base.Objects.equal(id, that.id) &&
+                com.google.common.base.Objects.equal(firstName, that.firstName) &&
+                com.google.common.base.Objects.equal(lastName, that.lastName) &&
+                com.google.common.base.Objects.equal(phoneNumber, that.phoneNumber) &&
+                com.google.common.base.Objects.equal(address, that.address) &&
+                com.google.common.base.Objects.equal(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return com.google.common.base.Objects.hashCode(id, firstName, lastName, phoneNumber, address, email);
+    }
+
+    @Override
+    public String toString() {
+        return Objects.toStringHelper(this)
+                .add("id", id)
+                .add("firstName", firstName)
+                .add("lastName", lastName)
+                .add("phoneNumber", phoneNumber)
+                .add("address", address)
+                .add("email", email)
+                .toString();
+    }
 }

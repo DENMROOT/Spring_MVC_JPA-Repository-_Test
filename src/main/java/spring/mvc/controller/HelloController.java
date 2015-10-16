@@ -29,4 +29,12 @@ public class HelloController {
         return "bye";
 
     }
+
+//    @RequestMapping(value = "/service",method = RequestMethod.GET)
+//    public String service(ModelMap model) {
+//
+//        model.addAttribute("message", "Spring 3 MVC - !!!");
+//        return "service";
+//
+//    }
 }

@@ -9,14 +9,13 @@ import spring.mvc.entity.ClientEntity;
 public class ClientUtil {
 
     public static ClientEntity createClient(String firstName, String lastName, String phoneNumber,
-                                      String address, String email, BankEntity bankEntity) {
+                                      String address, String email) {
         ClientEntity clientEntity = new ClientEntity();
         clientEntity.setFirstName(firstName);
         clientEntity.setLastName(lastName);
         clientEntity.setPhoneNumber(phoneNumber);
         clientEntity.setAddress(address);
         clientEntity.setEmail(email);
-//        client.setBank(bank);
 
         return clientEntity;
     }
