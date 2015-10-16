@@ -1,0 +1,33 @@
+<table class="table clienttable">
+    <tr>
+        <td><h3>Details for {{client.firstName}} {{client.lastName}}</h3></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Client ID</td>
+        <td>{{client.id}}</td>
+    </tr>
+    <tr>
+        <td>First Name</td>
+        <td>{{client.firstName}}</td>
+    </tr>
+    <tr>
+        <td>Second Name</td>
+        <td>{{client.lastName}}</td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td>{{client.address}}</td>
+    </tr>
+    <tr>
+        <td>Phone</td>
+        <td>{{client.phoneNumber}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{client.email}}</td>
+    </tr>
+</table>
+<div>
+    <a class="btn btn-primary" ui-sref="editClient({id:client.id})">Edit</a>
+</div>

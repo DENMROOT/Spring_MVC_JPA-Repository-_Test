@@ -4,11 +4,9 @@ package spring.mvc.service;
  * Created by Денис on 28.02.2015.
  */
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -36,8 +34,8 @@ public class BankEntityServiceTest {
     @Test
     public void testSaveBank() throws Exception {
         BankEntity bankEntity = bankService.addBank(BankUtil.createBank("My First Bank"));
-        ClientEntity clientEntity1 = clientService.addClient(ClientUtil.createClient("Denis", "Makarov", "+380(67)6138426", "Kyiv Lenina 68", "denm2000@gmail.com", bankEntity));
-        ClientEntity clientEntity2 = clientService.addClient(ClientUtil.createClient("Igor", "Pupkin", "+380(67)3332211", "Zaporizhzhya Lenina 68", "igor@gmail.com", bankEntity));
+        ClientEntity clientEntity1 = clientService.addClient(ClientUtil.createClient("Denis", "Makarov", "+380(67)6138426", "Kyiv Lenina 68", "denm2000@gmail.com"));
+        ClientEntity clientEntity2 = clientService.addClient(ClientUtil.createClient("Igor", "Pupkin", "+380(67)3332211", "Zaporizhzhya Lenina 68", "igor@gmail.com"));
 
         WorkerEntity workerEntity1 = workerService.addWorker(WorkerUtil.createWorker("Igor", "Vasechkin", WorkerStatus.MANAGER, "+380(67)3332211", bankEntity));
         WorkerEntity workerEntity2 = workerService.addWorker(WorkerUtil.createWorker("Masha", "Polina", WorkerStatus.MANAGER,"+380(67)3332211", bankEntity));
